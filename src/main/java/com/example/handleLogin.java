@@ -13,6 +13,7 @@ public class handleLogin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("login.html");
         response.setContentType("text/html");
+        // show the login page
         dispatcher.forward(request, response);
     }
 
@@ -23,14 +24,20 @@ public class handleLogin extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        // hard codded values
         String email= request.getParameter("email");
         String password = request.getParameter("pass");
 
+        // check if both parameters equals admin admin
         if(email.equals("admin") && password.equals("admin")){
+            // set a session for the user
             session.setAttribute("user", email);
+
+            // redirect to dashboard
             response.sendRedirect("dashboard");
         }
         else {
+            // throw error
             out.println("<h1>Email or password is wrong!</h1>");
         }
 

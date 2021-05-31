@@ -12,6 +12,7 @@ public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
+        // destroy the session
         session.invalidate();
         out.println("<h1>Logout successful</h1>");
     }

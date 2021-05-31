@@ -14,12 +14,14 @@ public class Dashboard extends HttpServlet {
         PrintWriter out = response.getWriter();
         String user = (String)session.getAttribute("user");
 
+        // check if there's a session
         if(session.getAttribute("user") != null){
             out.println("<h1>Dashboard</h1>");
             out.println("<h3>Welcome "+user+"<br/><br/>");
             out.println("<a href='logout' >Logout</a>");
         }
         else {
+            // else throw error
             out.println("<h1>unauthorized</h1>");
         }
     }
